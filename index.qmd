@@ -18,11 +18,11 @@ We integrate multi-source remote sensing and ecological tracking datasets. White
 
 ### Methodology
 
-We identify high-density crane hotspots using kernel-based smoothing of GPS point data. These areas are then evaluated using seasonal environmental metrics that correspond to ecological niche components such as vegetation availability, thermal conditions, water presence, and air quality (Yanco et al., 2024). The application allows users to select regions, filter by administrative or ecological criteria, and retrieve environmental summaries for any identified hotspot. This supports ecological comparisons across space, time, and protection status, making it easier to assess threats and justify targeted conservation actions.
+We detect crane hotspots by applying Gaussian kernel smoothing to GPS tracking points, generating a density surface (Yanco et al., 2024). Hotspots are selected above a user-defined percentile threshold. Each hotspot is enriched with seasonal environmental metrics—NDVI, temperature, NO₂, and water presence—based on remote sensing datasets from 2018–2021 (Turner et al., 2003). We also check for overlap with protected areas. This approach links habitat quality with crane movement to support evidence-based conservation planning (Runge et al., 2014).
 
 ### Interface
 
-The application is built on Google Earth Engine, offering a user-friendly interface for non-programmer conservation professionals. Users can explore interactive maps, filter hotspots by administrative boundaries or nature reserve proximity, and view detailed statistics by clicking on regions. A date slider enables seasonal comparison, while visualizations of NDVI, temperature, and pollution provide ecological context. By translating complex spatiotemporal data into actionable insights, the interface bridges the gap between ecological research and policy impact (Rose et al., 2018; Collen et al., 2013). The tool is intended to enhance the ability of users to advocate effectively for the protection of high-priority crane habitats.
+Built on Google Earth Engine, the application provides an interactive platform for conservationists without coding skills (Rose et al., 2018). Users can filter crane hotspots by country or province, adjust density thresholds, and click to view seasonal environmental summaries. Layers for vegetation, temperature, pollution, and water are displayed contextually (Collen et al., 2013). Simple controls and clear outputs help users translate complex spatiotemporal data into advocacy evidence to promote habitat protection.
 
 ## The Application
 
