@@ -14,7 +14,7 @@ Our application is designed for conservationists and environmental NGOs who seek
 
 ### Data
 
-We integrate multi-source remote sensing and ecological tracking datasets. White-naped Crane movement data comes from the “White-naped Crane Mongolia WSCC” study (Batbayar et al., 2024), which provides high-resolution GPS data via the Movebank Repository. Environmental conditions are assessed using MODIS NDVI for vegetation, ERA5 for temperature, Sentinel-5P for pollution levels, and GLCF for inland water extent. Nature reserve boundaries are sourced from the Protected Planet database, which provides standardized, globally updated information on protected areas. Together, these datasets allow us to quantify the environmental quality of crane habitats across space and time (Turner et al., 2003).
+We integrate multi-source remote sensing and ecological tracking datasets. White-naped Crane movement data comes from the “White-naped Crane Mongolia WSCC” study (Batbayar et al., 2024), which provides high-resolution GPS data via the Movebank Repository. Environmental conditions are assessed using MODIS NDVI for vegetation, ERA5 for temperature, Sentinel-5P for pollution levels, and GLCF for inland water extent. Nature reserve boundaries are sourced from the Protected Planet database, which provides information of protected areas under global standards. Together, these datasets allow us to quantify the environmental quality of crane habitats across space and time (Turner et al., 2003).
 
 ### Methodology
 
@@ -22,7 +22,7 @@ We detect crane hotspots by applying Gaussian kernel smoothing to GPS tracking p
 
 ### Interface
 
-Built on Google Earth Engine, the application provides an interactive platform for conservationists without coding skills (Rose et al., 2018). Users can filter crane hotspots by country or province, adjust density thresholds, and click to view seasonal environmental summaries. Layers for vegetation, temperature, pollution, and water are displayed contextually (Collen et al., 2013). Simple controls and clear outputs help users translate complex spatiotemporal data into advocacy evidence to promote habitat protection.
+Built on Google Earth Engine, the application provides an interactive platform for conservationists without coding skills (Rose et al., 2018). Users can filter crane hotspots by country or province, adjust density thresholds, and click to view seasonal environmental summaries. Layers for vegetation, temperature, pollution, and water fraction are displayed contextually (Collen et al., 2013). Simple controls and clear outputs help users translate complex spatiotemporal data into advocacy evidence to promote habitat protection.
 
 ## The Application
 
