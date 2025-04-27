@@ -835,4 +835,4 @@ Runge, C. A., Martin, T. G., Possingham, H. P., *et al.* (2014). Conserving mobi
 
 Wilcove, D. S., & Wikelski, M. (2008). Going, going, gone: Is animal migration disappearing? *PLoS Biology*, *6*(7), e188. https://doi.org/10.1371/journal.pbio.0060188  
 
-Yanco, S. W., Rutz, C., Abrahms, B., Cooper, N. W., Marra, P. P., Mueller, T., *et al.* (2024). Tracking individual animals can reveal the mechanisms of species loss. *Trends in Ecology & Evolution*. Advance online publication. https://doi.org/xxxx  
+Yanco, S.W., Oliver, R.Y., Iannarilli, F., et al. (2024) Migratory birds modulate niche tradeoffs in rhythm with seasons and life history. Proceedings of the National Academy of Sciences, 121 (41): e2316827121. doi:10.1073/pnas.2316827121.
