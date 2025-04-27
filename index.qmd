@@ -29,6 +29,8 @@ Built on Google Earth Engine, this application provides an interactive platform 
 
 # The Application
 
+You can explore the application below or access it directly through this link: [Cranes in transit app](https://casa25gw.projects.earthengine.app/view/cranes-in-transit)
+
 ::: column-page
 <iframe src="https://casa25gw.projects.earthengine.app/view/cranes-in-transit" width="100%" height="700px">
 
