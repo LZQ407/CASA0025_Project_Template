@@ -6,7 +6,7 @@ This application identifies and maps critical habitat-use hotspots of the migrat
 
 ### Problem Statement
 
-Migratory species like the White-naped Crane (Grus vipio) depend on a chain of seasonal habitats across East Asia, yet many critical stopover and staging sites lie wholly outside established nature reserves and remain vulnerable to agricultural expansion, urban development and climate variability (Wilcove & Wikelski 2008). Because these areas are only occupied for brief seasonal windows and span multiple jurisdictions, conservationists struggle to assemble the compelling, spatiotemporally precise evidence needed to justify their formal protection (Yanco et al. 2024; Runge et al. 2014).
+The White-naped Crane (Grus vipio) depends on a network of seasonal habitats across East Asia, yet many critical stopover and staging sites lie outside formal nature reserves. These off-reserve areas are highly vulnerable to agricultural expansion, urban development, and climate change (Wilcove & Wikelski, 2008). Because they are seasonally used and scattered across jurisdictions, conservationists struggle to gather precise evidence needed for protection (Yanco et al., 2024; Runge et al., 2014). Our application addresses this gap by identifying and evaluating crane hotspots beyond existing reserves to support broader habitat conservation.
 
 ### End User
 
