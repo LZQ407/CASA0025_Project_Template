@@ -22,7 +22,7 @@ Crane hotspots are extracted by summing GPS-tagged point counts and convolving t
 
 ### Interface
 
-Built on Google Earth Engine, this application provides an interactive platform for conservation practitioners to explore crane hotspots. First, users select a country and then a province to define their study region. A density slider lets them set a threshold between the 99th and 100th percentile, highlighting only the highest-density crane areas. Then, clicking any hotspot opens a panel displaying its peak crane season and that season’s averaged vegetation (NDVI), temperature, pollution (NO₂), and water-area fraction. Underlying environmental layers refresh automatically to provide geographic context. These intuitive steps transform complex spatiotemporal data into clear, shareable evidence for off-reserve habitat protection.
+Built on Google Earth Engine, this application provides an interactive platform for conservation practitioners to explore crane hotspots. Users select a country and province, set a density threshold, and view hotspots displayed in two layers: fully inside reserves (green) and intersecting/outside reserves (orange). This allows users to visualize not only general hotspot distribution but also identify areas where reserve boundaries could be extended. Clicking any hotspot opens a panel showing its peak crane season and averaged NDVI, temperature, pollution (NO₂), and water-area fraction. Environmental layers update dynamically to provide geographic context.
 
 ## The Application
 
