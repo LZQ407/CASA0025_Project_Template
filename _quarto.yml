@@ -1,25 +1,42 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
 book:
-  title: "CASA0025 Final Assessment"
-  author: "Group Name"
-  date: "01/01/2024"
+  title: "CASA0025 Group Project: Cranes in transit"
+  author: "SQLixirs"
+  date: "2025-04-27"
+  
+  navbar:
+     logo: "logo.png"
+     collapse: true
+     collapse-below: lg
+     background: dark
+     search: true
+     right:
+      - icon: github
+        href: https://github.com/LZQ407/CASA0025_Project_Template
+        
+  sidebar:
+    logo: "logo.png"
+    title: "Cranes in transit"
+    style: floating
+    reader-mode: true
+    collapse: true
+    pinned: false
+  
   chapters:
     - index.qmd
-
   repo-actions: [edit]
   downloads: [pdf, epub]
   sharing: [twitter, facebook]
-  favicon: favicon.ico
-  sidebar:
-    logo: casa_logo.png
-
-
+  favicon: "favicon.ico"
 
 format:
   html:
+    toc: true
+    toc-location: right
+    toc-depth: 2
     theme:
       dark: darkly
       light: cosmo
@@ -27,3 +44,4 @@ format:
     code-overflow: wrap
     highlight-style: monokai.theme
     linkcolor: "#34a832"
+

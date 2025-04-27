@@ -1,31 +1,33 @@
-# CASA00025 Group Project: Cranes in Transit
+---
+title: "CASA0025 - Cranes in Transit"
+format: html
+---
 
-## Project Summary
+# Project Summary
 
 This application identifies and maps critical habitat-use hotspots of the migratory White-naped Crane across East Asia, placing special emphasis on gotspots outside formal nature reserves, and evaluates their ecological condition. By integrating GPS tracking data with environmental indicators of vegetation, temperature, pollution and water availability, it provides conservation practitioners with robust evidence to protect off-reserve crane habitats. Built on Google Earth Engine, the tool offers an intuitive interface that lets users define any region along the migration corridor and explore seasonal and spatial patterns of crane-density hotspots and their habitat quality.
 
-### Problem Statement
+## Problem Statement
 
 The White-naped Crane (Grus vipio) depends on a network of seasonal habitats across East Asia, yet many critical stopover and staging sites lie outside formal nature reserves. These off-reserve areas are highly vulnerable to agricultural expansion, urban development, and climate change (Wilcove & Wikelski, 2008). Because they are seasonally used and scattered across jurisdictions, conservationists struggle to gather precise evidence needed for protection (Yanco et al., 2024; Runge et al., 2014). Our application addresses this gap by identifying and evaluating crane hotspots beyond existing reserves to support broader habitat conservation.
 
-### End User
+## End User
 
 Our application is designed for conservationists and environmental NGOs who seek to protect migratory bird habitats, especially off-reserve stopover and staging areas. These users often struggle to communicate the ecological significance of dynamic, short-lived sites to government bodies (Rose et al., 2018). By combining animal movement data with seasonal environmental indicators, our tool enables users to extract spatial evidence that supports off-reserve conservation claims. This helps bridge the gap between scientific data and policy advocacy, empowering practitioners to argue more effectively for new or extended habitat protections.
 
-### Data
+## Data
 
 We integrate multi-source remote sensing and ecological tracking datasets. White-naped Crane movement data comes from the “White-naped Crane Mongolia WSCC” study (Batbayar et al., 2024), which provides high-resolution GPS data via the Movebank Repository. Environmental conditions are assessed using MODIS NDVI for vegetation, ERA5 for temperature, Sentinel-5P for pollution levels, and JRC for inland water extent. Nature reserve boundaries are sourced from the Protected Planet database, which provides information of protected areas under global standards. This integrated dataset enables the identification of high-density crane-use hotspots and then the precise, spatiotemporal quantification of environmental quality within those hotspots along the migratory corridor.
 
-### Methodology
+## Methodology
 
 Crane hotspots are extracted by summing GPS-tagged point counts and convolving them with a Gaussian kernel (10 km radius, σ = 10 km) to produce a smooth density surface. Pixels above a user-defined percentile threshold are masked, passed through a 50 m focal-maximum filter, and vectorized into polygons representing hotspots. Hotspots are classified into two categories: fully inside reserves or intersecting/outside reserves, with reserve overlap percentage calculated. Finally, the crane peak season is identified based on the tracking data distribution across four seasons, and mean values of NDVI, 2 m air temperature, tropospheric NO₂ concentration, and water-area fraction is retrieved for that peak season, which will help end users asses habitat quality.
 
-### Interface
+## Interface
 
 Built on Google Earth Engine, this application provides an interactive platform for conservation practitioners to explore crane hotspots. First, users select a target country and province, customize a density threshold, and view hotspots displayed in two layers: fully outside reserves (red) and intersecting or inside reserves (orange). Next, clicking any hotspot opens a panel showing the percentage of its area within nature reserves, the peak crane season, and that season’s average vegetation (NDVI), temperature, NO₂ pollution, and water‐area fraction. These intuitive steps transform complex spatiotemporal data into clear, actionable evidence for off‐reserve crane habitat protection.
 
-## The Application
-
+# The Application
 
 ::: column-page
 <iframe src="https://casa25gw.projects.earthengine.app/view/cranes-in-transit" width="100%" height="700px">
@@ -33,9 +35,9 @@ Built on Google Earth Engine, this application provides an interactive platform 
 </iframe>
 :::
 
-## How it Works
+# How it Works
 
-### Section A: Data Setting
+## Section A: Data Setting
 
 The application centers and initializes a map in ‘SATELLITE’ mode for geographic context.
 
@@ -90,7 +92,7 @@ var seasons = {
 var seasonNames = ee.List(['Winter', 'Spring', 'Summer', 'Autumn']);
 ```
 
-2018-2021 collections of the four environmental datasets: NDVI (MODIS), air temperature (ERA5), tropospheric NO2 (Sentinel-5P), and water presence (JRC Monthly History) are filtered. 
+2018-2021 collections of the four environmental datasets: NDVI (MODIS), air temperature (ERA5), tropospheric NO2 (Sentinel-5P), and water presence (JRC Monthly History) are filtered.
 
 ``` js
 // A4: Load Environmental layers
@@ -106,7 +108,7 @@ var waterCol = ee.ImageCollection('JRC/GSW1_4/MonthlyHistory')
     .filterDate(envStart, envEnd);
 ```
 
-### Section B: Data Preprocessing
+## Section B: Data Preprocessing
 
 The `safeMeanWithFallback` function computes seasonal means, defaulting to annual means if insufficient data exists, ensuring every season has valid data.
 
@@ -160,7 +162,7 @@ seasonNames.getInfo().forEach(function(seasonName) {
 });
 ```
 
-Country borders, nature reserves, and the corridor are styled and added to the core map layer. 
+Country borders, nature reserves, and the corridor are styled and added to the core map layer.
 
 ``` js
 // B4: Core Map Layers Styling
@@ -174,7 +176,7 @@ Map.addLayer(countriesLayer, {}, 'Country Borders', true);
 Map.addLayer(corridorLayer, {}, 'Migration Corridor', true);
 ```
 
-### Section C: Utility Functions
+## Section C: Utility Functions
 
 `getBestZoomLevel` measures the maximum latitude/longitude span of the selected region bounds and maps it to one of five preset zoom levels.
 
@@ -239,7 +241,7 @@ function renderHotspotLayers(collection, namePrefix) {
 }
 ```
 
-### Section D: UI Components
+## Section D: UI Components
 
 The main control panel provides the app title and serves as a dynamic container for all sub-panels.
 
@@ -419,7 +421,7 @@ descriptionPanel.add(ui.Label('Click here for the crane source data (Batbayar et
 mainPanel.add(descriptionPanel);
 ```
 
-`regionPanel` contains country/province dropdowns (with `onChange` callbacks), labels, and the Reset button to guide users through the region selection. 
+`regionPanel` contains country/province dropdowns (with `onChange` callbacks), labels, and the Reset button to guide users through the region selection.
 
 ``` js
 // D8: Region Selection Handlers (Stubs)
@@ -449,12 +451,11 @@ regionPanel.add(resetButton);
 mainPanel.add(regionPanel);
 ```
 
-### Section E: Hotspot Extraction
+## Section E: Hotspot Extraction
 
-Crane point counts (count = 1) are rasterized via `reduceToImage` and then convolved with a Gaussian kernel of radius 10 km and σ = 10 km to produce a smooth density surface. In continuous form, the weighting follows:
-$$
+Crane point counts (count = 1) are rasterized via `reduceToImage` and then convolved with a Gaussian kernel of radius 10 km and σ = 10 km to produce a smooth density surface. In continuous form, the weighting follows: $$
 K(d) = \frac{1}{\sqrt{2\pi}\,\sigma}\exp\!\Bigl(-\frac{d^2}{2\sigma^2}\Bigr),
-$$  
+$$\
 This ensures that observations contribute most strongly near their true location and taper off smoothly.
 
 ``` js
@@ -475,7 +476,7 @@ var densityImage = cranes
     .clip(convex_hull);
 ```
 
-Country/province selection resets layers, zooms to the regional bounds (with borders and reserves redrawn), then filters and renders `hotspotsSimplified` within it. 
+Country/province selection resets layers, zooms to the regional bounds (with borders and reserves redrawn), then filters and renders `hotspotsSimplified` within it.
 
 ``` js
 // E2: Country-Based Filtering Handler
@@ -727,7 +728,7 @@ function updateHotspotsFromSlider(clientValue) {
 }
 ```
 
-### Section F: UI Setting & Legend
+## Section F: UI Setting & Legend
 
 Country and province dropdowns are populated with names from the GAUL dataset, and their `onChange` events are linked to the filtering handlers defined earlier.
 
@@ -825,14 +826,14 @@ Map.add(legend);
 updateHotspotsFromSlider(threshold_value);
 ```
 
-### Refrences
+# References
 
-Batbayar, N., Galtbalt, B., Natsagdorj, T., *et al.* (2024). *White-naped crane Mongolia WSCC* [Dataset]. Movebank Data Repository. https://doi.org/10.5441/001/1.600  
+Batbayar, N., Galtbalt, B., Natsagdorj, T., *et al.* (2024). *White-naped crane Mongolia WSCC* \[Dataset\]. Movebank Data Repository. https://doi.org/10.5441/001/1.600
 
-Rose, D. C., Sutherland, W. J., Amano, T., *et al.* (2018). The major barriers to evidence-informed conservation policy and possible solutions. *Conservation Letters*, *11*(5), e12564. https://doi.org/10.1111/conl.12564  
+Rose, D. C., Sutherland, W. J., Amano, T., *et al.* (2018). The major barriers to evidence-informed conservation policy and possible solutions. *Conservation Letters*, *11*(5), e12564. https://doi.org/10.1111/conl.12564
 
-Runge, C. A., Martin, T. G., Possingham, H. P., *et al.* (2014). Conserving mobile species. *Frontiers in Ecology and the Environment*, *12*(7), 395–402. https://doi.org/10.1890/130237  
+Runge, C. A., Martin, T. G., Possingham, H. P., *et al.* (2014). Conserving mobile species. *Frontiers in Ecology and the Environment*, *12*(7), 395–402. https://doi.org/10.1890/130237
 
-Wilcove, D. S., & Wikelski, M. (2008). Going, going, gone: Is animal migration disappearing? *PLoS Biology*, *6*(7), e188. https://doi.org/10.1371/journal.pbio.0060188  
+Wilcove, D. S., & Wikelski, M. (2008). Going, going, gone: Is animal migration disappearing? *PLoS Biology*, *6*(7), e188. https://doi.org/10.1371/journal.pbio.0060188
 
 Yanco, S.W., Oliver, R.Y., Iannarilli, F., et al. (2024) Migratory birds modulate niche tradeoffs in rhythm with seasons and life history. Proceedings of the National Academy of Sciences, 121 (41): e2316827121. doi:10.1073/pnas.2316827121.
