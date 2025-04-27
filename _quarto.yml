@@ -28,7 +28,6 @@ book:
   chapters:
     - index.qmd
   repo-actions: [edit]
-  downloads: [pdf, epub]
   sharing: [twitter, facebook]
   favicon: "favicon.ico"
 
@@ -44,4 +43,6 @@ format:
     code-overflow: wrap
     highlight-style: monokai.theme
     linkcolor: "#34a832"
+  
+  
 
