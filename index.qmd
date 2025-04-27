@@ -283,8 +283,7 @@ sliderPanel.add(ui.Label('Set hotspots density percentile', {
   fontWeight: 'bold', fontSize: '14px',margin: '6px 0px 0px 6px' 
 }));
 
-sliderPanel.add(ui.Label('Higher slider values display progressively denser hotspots (0 = areas at the 99th percentile; 1 = only the highest-density areas).', {
-  fontWeight: 'normal', fontSize: '12px',margin: '4px 0px 6px 6px', color: '#3b3b3b' 
+sliderPanel.add(ui.Label('Higher slider values display progressively denser hotspots\n(1 = areas at the 99th percentile; 100 = only the highest-density areas).', {fontWeight: 'normal', fontSize: '12px',margin: '4px 0px 6px 6px', color: '#3b3b3b', whiteSpace: 'pre-line'  
 }));
 
 var percentileSlider = ui.Slider({
