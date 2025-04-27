@@ -2,27 +2,27 @@
 
 ## Project Summary
 
-This project visualizes seasonal habitat use of the migratory White-naped Crane across East Asia. By integrating GPS tracking data with environmental indicators such as vegetation, temperature, pollution, and water availability, the application identifies critical hotspots and evaluates their ecological quality. Designed for conservation practitioners, the tool supports science-based advocacy by enabling users to generate evidence that informs policy and habitat protection. Built on Google Earth Engine, it offers an accessible, interactive interface to explore temporal patterns and argue for conservation priorities at regional and national levels.
+This application identifies and maps critical habitat-use hotspots of the migratory White-naped Crane across East Asia, placing special emphasis on gotspots outside formal nature reserves, and evaluates their ecological condition. By integrating GPS tracking data with environmental indicators of vegetation, temperature, pollution and water availability, it provides conservation practitioners with robust evidence to protect off-reserve crane habitats. Built on Google Earth Engine, the tool offers an intuitive interface that lets users define any region along the migration corridor and explore seasonal and spatial patterns of crane-density hotspots and their habitat quality.
 
 ### Problem Statement
 
-Migratory species like the White-naped Crane (Grus vipio) rely on multiple seasonal habitats across East Asia for survival. However, many of these areas—especially temporary stopover sites—are under threat from agricultural expansion, urban development, and climate variability (Wilcove and Wikelski, 2008). These habitats often fall outside existing protected areas and are ecologically important only during specific time windows. Because such spatiotemporal dynamics are difficult to observe and document, conservationists face challenges in presenting compelling scientific evidence that justifies habitat protection (Yanco et al., 2024; Runge et al., 2014).
+Migratory species like the White-naped Crane (Grus vipio) depend on a chain of seasonal habitats across East Asia, yet many critical stopover and staging sites lie wholly outside established nature reserves and remain vulnerable to agricultural expansion, urban development and climate variability (Wilcove & Wikelski 2008). Because these areas are only occupied for brief seasonal windows and span multiple jurisdictions, conservationists struggle to assemble the compelling, spatiotemporally precise evidence needed to justify their formal protection (Yanco et al. 2024; Runge et al. 2014).
 
 ### End User
 
-Our application is designed for conservationists and environmental NGOs who seek to protect migratory bird habitats. These users often struggle to communicate the ecological significance of dynamic, short-lived stopover areas to government bodies. By combining animal movement data with seasonal environmental indicators, our tool enables users to extract spatial evidence that supports conservation claims. This helps bridge the gap between scientific data and policy advocacy, empowering practitioners to argue more effectively for new or extended habitat protections (Rose et al., 2018).
+Our application is designed for conservationists and environmental NGOs who seek to protect migratory bird habitats, especially off-reserve stopover and staging areas. These users often struggle to communicate the ecological significance of dynamic, short-lived sites to government bodies (Rose et al., 2018). By combining animal movement data with seasonal environmental indicators, our tool enables users to extract spatial evidence that supports off-reserve conservation claims. This helps bridge the gap between scientific data and policy advocacy, empowering practitioners to argue more effectively for new or extended habitat protections.
 
 ### Data
 
-We integrate multi-source remote sensing and ecological tracking datasets. White-naped Crane movement data comes from the “White-naped Crane Mongolia WSCC” study (Batbayar et al., 2024), which provides high-resolution GPS data via the Movebank Repository. Environmental conditions are assessed using MODIS NDVI for vegetation, ERA5 for temperature, Sentinel-5P for pollution levels, and GLCF for inland water extent. Nature reserve boundaries are sourced from the Protected Planet database, which provides information of protected areas under global standards. Together, these datasets allow us to quantify the environmental quality of crane habitats across space and time (Turner et al., 2003).
+We integrate multi-source remote sensing and ecological tracking datasets. White-naped Crane movement data comes from the “White-naped Crane Mongolia WSCC” study (Batbayar et al., 2024), which provides high-resolution GPS data via the Movebank Repository. Environmental conditions are assessed using MODIS NDVI for vegetation, ERA5 for temperature, Sentinel-5P for pollution levels, and JRC for inland water extent. Nature reserve boundaries are sourced from the Protected Planet database, which provides information of protected areas under global standards. This integrated dataset enables the identification of high-density crane-use hotspots and then the precise, spatiotemporal quantification of environmental quality within those hotspots along the migratory corridor.
 
 ### Methodology
 
-We detect crane hotspots by applying Gaussian kernel smoothing to GPS tracking points, generating a density surface (Yanco et al., 2024). Hotspots are selected above a user-defined percentile threshold. Each hotspot is enriched with seasonal environmental metrics—NDVI, temperature, NO₂, and water presence—based on remote sensing datasets from 2018–2021 (Turner et al., 2003). We also check for overlap with protected areas. This approach links habitat quality with crane movement to support evidence-based conservation planning (Runge et al., 2014).
+Crane hotspots are extracted by summing GPS-tagged point counts and convolving them with a Gaussian kernel (10 km radius, σ = 10 km) to produce a smooth density surface (Yanco et al., 2024). Pixels above a user-defined percentile threshold are then masked, passed through a 50 m focal-maximum filter, and vectorized into polygons representing hotspots. Each hotspot is enriched by sampling seasonal mean NDVI, 2 m air temperature, tropospheric NO₂, and water-area fraction. Overlap with protected-area boundaries is quantified to classify each hotspot’s reserve coverage. This integrated workflow links crane movement patterns with habitat quality, supporting evidence-based off-reserve conservation planning.
 
 ### Interface
 
-Built on Google Earth Engine, the application provides an interactive platform for conservationists without coding skills (Rose et al., 2018). Users can filter crane hotspots by country or province, adjust density thresholds, and click to view seasonal environmental summaries. Layers for vegetation, temperature, pollution, and water fraction are displayed contextually (Collen et al., 2013). Simple controls and clear outputs help users translate complex spatiotemporal data into advocacy evidence to promote habitat protection.
+Built on Google Earth Engine, this application provides an interactive platform for conservation practitioners to explore crane hotspots. First, users select a country and then a province to define their study region. A density slider lets them set a threshold between the 99th and 100th percentile, highlighting only the highest-density crane areas. Then, clicking any hotspot opens a panel displaying its peak crane season and that season’s averaged vegetation (NDVI), temperature, pollution (NO₂), and water-area fraction. Underlying environmental layers refresh automatically to provide geographic context. These intuitive steps transform complex spatiotemporal data into clear, shareable evidence for off-reserve habitat protection.
 
 ## The Application
 
@@ -827,10 +827,13 @@ updateHotspotsFromSlider(threshold_value);
 ```
 
 ### Refrences
-Batbayar, N., Galtbalt, B., Natsagdorj, T., et al. (2024) White-naped crane Mongolia WSCC. Movebank Data Repository. Available at: https://doi.org/10.5441/001/1.600.
-Collen, B., Pettorelli, N., Baillie, J.E.M., et al. (2013) “Biodiversity Monitoring and Conservation: Bridging the Gaps Between Global Commitment and Local Action.” In Collen, B., Pettorelli, N., Baillie, J.E.M., et al. (eds.) Biodiversity Monitoring and Conservation. 1st ed. Wiley. pp. 1–16. doi:10.1002/9781118490747.ch1.
-Rose, D.C., Sutherland, W.J., Amano, T., et al. (2018) The major barriers to evidence‐informed conservation policy and possible solutions. Conservation Letters, 11 (5): e12564. doi:10.1111/conl.12564.
-Runge, C.A., Martin, T.G., Possingham, H.P., et al. (2014) Conserving mobile species. Frontiers in Ecology and the Environment, 12 (7): 395–402. doi:10.1890/130237.
-Turner, W., Spector, S., Gardiner, N., et al. (2003) Remote sensing for biodiversity science and conservation. Trends in ecology & evolution, 18 (6): 306–314.
-Wilcove, D.S. and Wikelski, M. (2008) Going, going, gone: is animal migration disappearing. PLoS biology, 6 (7): e188.
 
+Batbayar, N., Galtbalt, B., Natsagdorj, T., *et al.* (2024). *White-naped crane Mongolia WSCC* [Dataset]. Movebank Data Repository. https://doi.org/10.5441/001/1.600  
+
+Rose, D. C., Sutherland, W. J., Amano, T., *et al.* (2018). The major barriers to evidence-informed conservation policy and possible solutions. *Conservation Letters*, *11*(5), e12564. https://doi.org/10.1111/conl.12564  
+
+Runge, C. A., Martin, T. G., Possingham, H. P., *et al.* (2014). Conserving mobile species. *Frontiers in Ecology and the Environment*, *12*(7), 395–402. https://doi.org/10.1890/130237  
+
+Wilcove, D. S., & Wikelski, M. (2008). Going, going, gone: Is animal migration disappearing? *PLoS Biology*, *6*(7), e188. https://doi.org/10.1371/journal.pbio.0060188  
+
+Yanco, S. W., Rutz, C., Abrahms, B., Cooper, N. W., Marra, P. P., Mueller, T., *et al.* (2024). Tracking individual animals can reveal the mechanisms of species loss. *Trends in Ecology & Evolution*. Advance online publication. https://doi.org/xxxx  
